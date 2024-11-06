@@ -1,0 +1,1 @@
+deb [sighed-by=/etc/apt/trusted.gpg.d/learning-raa-ppa.gpg] https://learning-raa.github.io/raa-ppa ./

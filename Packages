@@ -1,0 +1,11 @@
+Package: new
+Version: 0.1
+Architecture: all
+Maintainer: raa <raa@mail.com>
+Filename: ./new_0.1_all.deb
+Size: 644
+MD5sum: b8267737d97dc87278d939b322a558e9
+SHA1: 875944f98f6544b3ad244c68527843937d6468aa
+SHA256: 3f24c4206e895692c56446f0a1238516bedfc68fc9d241d9685dc6382bdfd307
+Description: test package
+
