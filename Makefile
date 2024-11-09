@@ -32,7 +32,7 @@ update.key.gpg:
 
 install:
 	@curl -s --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
-		| sude tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
+		| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
 		> /dev/null
 	@sudo curl -s --compressed \
 		-o "/etc/apt/sources.list.d/$(LIST_FILE)" \
