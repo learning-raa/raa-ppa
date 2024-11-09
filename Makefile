@@ -30,7 +30,7 @@ update.key.gpg:
 	@echo "updating KEY.gpg .."
 	@gpg --armor --export $(GPG_ID) > KEY.gpg
 
-installer:
+install:
 	@curl -s --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
 		| sude tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
 		> /dev/null
