@@ -7,8 +7,11 @@ LIST_FILE=debraa.list
 help:
 	@nvim Makefile
 
+update.short: update.packages update.in_release
+	@echo 'SHORT update done!'
+
 update.all: update.key.gpg update.packages update.in_release update.list_file
-	@echo 'updating done!'
+	@echo 'FULL update done!'
 
 update.list_file:
 	@echo "updating list file.."
@@ -30,10 +33,15 @@ update.key.gpg:
 	@echo "updating KEY.gpg .."
 	@gpg --armor --export $(GPG_ID) > KEY.gpg
 
+clear:
+	@rm -v KEY.gpg Packages Packages.gz Release Release.gpg InRelease $(LIST_FILE)
+
+# # # # # # # #
 install:
-	@curl -s --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
-		| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
-		> /dev/null
+	# @curl -s --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
+	#	| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
+	#	> /dev/null
+	@curl -s --compressed "$(PPA_URL)/KEY.gpg" sudo apt-key add -
 	@sudo curl -s --compressed \
 		-o "/etc/apt/sources.list.d/$(LIST_FILE)" \
 		"$(PPA_URL)/$(LIST_FILE)"
