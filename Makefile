@@ -15,8 +15,9 @@ update.all: update.key.gpg update.packages update.in_release update.list_file
 
 update.list_file:
 	@echo "updating list file.."
-	@echo "deb [signed-by=/etc/apt/trusted.gpg.g/$(TRUSTED_PPA_GPG_NAME)] $(PPA_URL) ./" \
-		> $(LIST_FILE)
+	@echo "deb $(PPA_URL) ./" > $(LIST_FILE)
+	# @echo "deb [signed-by=/etc/apt/trusted.gpg.g/$(TRUSTED_PPA_GPG_NAME)] $(PPA_URL) ./" \
+	#	> $(LIST_FILE)
 
 update.in_release:
 	@echo "updating InRelease .."
