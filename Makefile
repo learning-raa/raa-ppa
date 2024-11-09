@@ -12,7 +12,8 @@ update.all: update.key.gpg update.packages update.in_release update.list_file
 
 update.list_file:
 	@echo "updating list file.."
-	@echo "deb [signed-by=/etc/apt/trusted.gpg.g/$(TRUSTED_PPA_GPG_NAME)] $(PPA_URL) ./" > $(LIST_FILE)
+	@echo "deb [signed-by=/etc/apt/trusted.gpg.g/$(TRUSTED_PPA_GPG_NAME)] $(PPA_URL) ./" \
+		> $(LIST_FILE)
 
 update.in_release:
 	@echo "updating InRelease .."
@@ -29,6 +30,13 @@ update.key.gpg:
 	@echo "updating KEY.gpg .."
 	@gpg --armor --export $(GPG_ID) > KEY.gpg
 
+installer:
+	@curl -s --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
+		| sude tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
+		> /dev/null
+	@sudo curl -s --compressed \
+		-o "/etc/apt/sources.list.d/$(LIST_FILE)" \
+		"$(PPA_URL)/$(LIST_FILE)"
 
 # # # # # # # #
 pull:
@@ -38,6 +46,9 @@ savetogit: git.pushall
 git.pushall: git.commitall
 	@git push
 git.commitall: git.addall
-	@if [ -n "$(shell git status -s)" ] ; then git commit -m 'saving'; else echo '--- nothing to commit'; fi
+	@if [ -n "$(shell git status -s)" ] ; then \
+		git commit -m 'saving'; \
+		else echo '--- nothing to commit'; \
+		fi
 git.addall:
 	@git add .
