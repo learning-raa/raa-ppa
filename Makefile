@@ -41,7 +41,7 @@ install:
 	# @curl -s --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
 	#	| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
 	#	> /dev/null
-	@curl -s --compressed "$(PPA_URL)/KEY.gpg" sudo apt-key add -
+	@curl -s --compressed "$(PPA_URL)/KEY.gpg" | sudo apt-key add -
 	@sudo curl -s --compressed \
 		-o "/etc/apt/sources.list.d/$(LIST_FILE)" \
 		"$(PPA_URL)/$(LIST_FILE)"
