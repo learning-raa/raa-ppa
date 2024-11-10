@@ -16,8 +16,6 @@ update.all: update.key.gpg update.packages update.in_release update.list_file
 update.list_file:
 	@echo "updating list file.."
 	@echo "deb $(PPA_URL) ./" > $(LIST_FILE)
-	# @echo "deb [signed-by=/etc/apt/trusted.gpg.g/$(TRUSTED_PPA_GPG_NAME)] $(PPA_URL) ./" \
-	#	> $(LIST_FILE)
 
 update.in_release:
 	@echo "updating InRelease .."
@@ -39,12 +37,15 @@ clear:
 
 # # # # # # # #
 install:
-	@curl -s --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
-		| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
-		> /dev/null
-	@sudo curl -s --compressed \
+	@sudo curl -sS --compressed \
+		-o "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
+		"$(PPA_URL)/KEY.gpg"
+	@sudo curl -sS --compressed \
 		-o "/etc/apt/sources.list.d/$(LIST_FILE)" \
 		"$(PPA_URL)/$(LIST_FILE)"
+	#@curl -sS --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
+	#	| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
+	#	> /dev/null
 
 # # # # # # # #
 pull:
