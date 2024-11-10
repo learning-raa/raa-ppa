@@ -20,3 +20,14 @@ SHA1: f56ceb8baafabc5cfe0555c797cb0ec38925ddde
 SHA256: 84d699ef5e04e5451cc6976b2641832ee847e5e99158f0dc1fa671c72b0fe370
 Description: test package
 
+Package: raa-new
+Version: 0.3
+Architecture: all
+Maintainer: raa <raa@mail.com>
+Filename: ./raa-new_0.3_all.deb
+Size: 756
+MD5sum: 8e8d96566d988af29ac6bfd9edfd6665
+SHA1: 93389addf8f59588dea21a26ceb6ef092ed8b8d0
+SHA256: 2c7b6f851c3cfbe3e3fc2866768cc6d6c1102904375a8a63dbcc8577e897fa6b
+Description: test package
+
