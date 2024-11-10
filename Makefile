@@ -7,8 +7,8 @@ LIST_FILE=debraa.list
 help:
 	@nvim Makefile
 
-update.short: update.packages update.in_release
-	@echo 'SHORT update done!'
+update: update.packages update.in_release
+	@echo 'minimal update done!'
 
 update.all: update.key.gpg update.packages update.in_release update.list_file
 	@echo 'FULL update done!'

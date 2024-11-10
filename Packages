@@ -1,11 +1,22 @@
-Package: new
+Package: raa-new
 Version: 0.1
 Architecture: all
 Maintainer: raa <raa@mail.com>
-Filename: ./new_0.1_all.deb
-Size: 644
-MD5sum: b8267737d97dc87278d939b322a558e9
-SHA1: 875944f98f6544b3ad244c68527843937d6468aa
-SHA256: 3f24c4206e895692c56446f0a1238516bedfc68fc9d241d9685dc6382bdfd307
+Filename: ./raa-new_0.1_all.deb
+Size: 648
+MD5sum: 4edefe506b3577360e110c48e1be5a94
+SHA1: b87fb365d59b0f561600b1ca3da61c971d3d4192
+SHA256: 797b1289a13a12e2afe788593a7cb930bc0e85a209585e2287a1729c0fb6beb4
+Description: test package
+
+Package: raa-new
+Version: 0.2
+Architecture: all
+Maintainer: raa <raa@mail.com>
+Filename: ./raa-new_0.2_all.deb
+Size: 760
+MD5sum: 3deeac5b1084f14030e5e17bdc77ca3c
+SHA1: f56ceb8baafabc5cfe0555c797cb0ec38925ddde
+SHA256: 84d699ef5e04e5451cc6976b2641832ee847e5e99158f0dc1fa671c72b0fe370
 Description: test package
 
