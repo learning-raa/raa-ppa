@@ -37,15 +37,12 @@ clear:
 
 # # # # # # # #
 install:
-	@sudo curl -sS --compressed \
-		-o "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
-		"$(PPA_URL)/KEY.gpg"
+	@curl -sS --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
+		| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
+		> /dev/null
 	@sudo curl -sS --compressed \
 		-o "/etc/apt/sources.list.d/$(LIST_FILE)" \
 		"$(PPA_URL)/$(LIST_FILE)"
-	#@curl -sS --compressed "$(PPA_URL)/KEY.gpg" | gpg --dearmor \
-	#	| sudo tee "/etc/apt/trusted.gpg.d/$(TRUSTED_PPA_GPG_NAME)" \
-	#	> /dev/null
 
 # # # # # # # #
 pull:
